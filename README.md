@@ -1,12 +1,33 @@
-# React + Vite
+# DashNotes Frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## 🚀 Descripción
 
-Currently, two official plugins are available:
+DashNotes es una aplicación web que permite a los usuarios gestionar y organizar sus notas de manera eficiente. El frontend está construido con **React**, **Tailwind CSS** y **Vite** como herramientas principales para ofrecer una experiencia de usuario rápida y responsiva.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Este repositorio contiene el código del **Frontend** de la aplicación, que se comunica con el **Backend** para cargar, crear, actualizar y eliminar notas.
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## 🛠️ Tecnologías
+
+- **React.js**: Librería para construir interfaces de usuario.
+- **Tailwind CSS**: Framework de CSS para crear diseños rápidos y responsivos.
+- **Vite**: Herramienta moderna para la construcción de aplicaciones web, usada para optimizar el tiempo de desarrollo y la compilación.
+- **Axios**: Cliente HTTP para realizar peticiones al backend.
+- **React DevTools**: Herramienta de desarrollo para depurar aplicaciones de React.
+
+---
+
+## 📂 Estructura de Directorios
+
+```plaintext
+/src
+├── /api                # Contiene las funciones para interactuar con el backend
+├── /components         # Componentes reutilizables de React
+├── /pages              # Páginas de la aplicación
+├── App.jsx             # Componente principal de la aplicación
+├── index.css           # Estilos globales
+├── main.jsx            # Punto de entrada de React
+          
+
+
