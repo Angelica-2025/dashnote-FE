@@ -32,6 +32,27 @@ export async function fetchNotes() {
   } catch (error) {
     console.error('Error fetching notes:', error);
     throw error;
+  } 
+}
+
+// Eliminar una nota por su ID
+export async function deleteNote(id) {
+  try {
+    const response = await axios.delete(`http://localhost:8080/api/notes/${id}`);
+    return response.data;
+  } catch (error) {
+    console.error('Error deleting note:', error);
+    throw error;
   }
 }
 
+//Actualizar una nota por su ID
+export async function updateNote(id, updateData) {
+  try {
+    const response = await axios.put(`http://localhost:8080/api/notes/${id}`, uddateData);
+    return response.data;
+  } catch (error) {
+    console.error('Error updtaing note:', error);
+    throw error;
+  }
+}

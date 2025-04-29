@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
-import { fetchNotes } from "../api/checkBackend.js";
+import { fetchNotes, deleteNote, updateNote } from "../api/checkBackend.js";
+import { NoteItem } from './NoteItem.jsx';
 
 export const NoteListUpdate = () => {
     const [notes, setNotes] = useState([]);
@@ -18,6 +19,26 @@ export const NoteListUpdate = () => {
         }
     };
 
+    const handleDeleteNote = async (id) => {
+        try {
+            await deleteNote(id);
+            setNotes(moduleRunnerTransform.filter(note => note.id !== id));
+        } catch (err) {
+            console.error("Error deleting note", err);
+            setError("Error al eliminar la nota.");
+        }
+    };
+
+    const handleUpdateNote = async (id, updatedData) => {
+        try {
+          const updatedNote = await updateNote(id, updatedData);
+          setNotes(notes.map(note => (note.id === id ? updatedNote : note)));
+        } catch (err) {
+          console.error("Error updating note:", err);
+          setError("Error al actualizar la nota.");
+        }
+      };
+      
     useEffect(() => {
         loadNotes();
     }, []);
@@ -33,10 +54,7 @@ export const NoteListUpdate = () => {
     return (
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8">
             {notes.map((note) => (
-                <div key={note.id} className="bg-white p-4 rounded-lg shadow">
-                    <h3 className="font-bold text-lg mb-2">{note.title}</h3>
-                    <p className="text-gray-700">{note.content}</p>
-                </div>
+                <NoteItem key={note.id} note={note} onDelete={handleDeleteNote} onUpdate={handleUpdateNote} />
             ))}
         </div>
     );
