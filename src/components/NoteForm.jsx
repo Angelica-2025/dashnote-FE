@@ -1,4 +1,3 @@
-// src/components/NoteForm.jsx
 import { useState } from "react";
 import { createNote } from "../api/checkBackend.js";
 

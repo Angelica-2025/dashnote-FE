@@ -9,7 +9,7 @@ export const App = () => {
 
   useEffect(() => {
     const verifyBackend = async () => {
-      const isUp = await checkBackendStatus("http://localhost:8080/api/notes"); 
+      const isUp = await checkBackendStatus("http://localhost:8082/api/notes");
       setBackendUp(isUp);
     };
     verifyBackend();

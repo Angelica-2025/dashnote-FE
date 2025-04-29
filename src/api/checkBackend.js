@@ -1,11 +1,10 @@
-
-// src/api/checkBackend.js
 import axios from 'axios';
+import BACKEND_URL from './config';
 
 // Verificar si el backend está arriba
-export async function checkBackendStatus(url) {
+export async function checkBackendStatus() {
   try {
-    const response = await axios.get(url);
+    const response = await axios.get(`${BACKEND_URL}/api/notes`);
     return response.status === 200;
   } catch (error) {
     console.error('Error checking backend status:', error);
@@ -16,7 +15,7 @@ export async function checkBackendStatus(url) {
 // Crear una nueva nota
 export async function createNote(noteData) {
   try {
-    const response = await axios.post('http://localhost:8080/api/notes', noteData);
+    const response = await axios.post(`${BACKEND_URL}/api/notes`, noteData);
     return response.data;
   } catch (error) {
     console.error('Error creating note:', error);
@@ -27,7 +26,7 @@ export async function createNote(noteData) {
 // Obtener todas las notas
 export async function fetchNotes() {
   try {
-    const response = await axios.get('http://localhost:8080/api/notes');
+    const response = await axios.get(`${BACKEND_URL}/api/notes`);
     return response.data;
   } catch (error) {
     console.error('Error fetching notes:', error);
@@ -38,7 +37,7 @@ export async function fetchNotes() {
 // Eliminar una nota por su ID
 export async function deleteNote(id) {
   try {
-    const response = await axios.delete(`http://localhost:8080/api/notes/${id}`);
+    const response = await axios.delete(`${BACKEND_URL}/api/notes/${id}`);
     return response.data;
   } catch (error) {
     console.error('Error deleting note:', error);
@@ -46,13 +45,14 @@ export async function deleteNote(id) {
   }
 }
 
-//Actualizar una nota por su ID
+// Actualizar una nota por su ID
 export async function updateNote(id, updateData) {
   try {
-    const response = await axios.put(`http://localhost:8080/api/notes/${id}`, uddateData);
+    const response = await axios.put(`${BACKEND_URL}/api/notes/${id}`, updateData);
     return response.data;
   } catch (error) {
-    console.error('Error updtaing note:', error);
+    console.error('Error updating note:', error);
     throw error;
   }
 }
+
